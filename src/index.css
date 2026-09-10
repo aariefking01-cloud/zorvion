@@ -1,0 +1,462 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    /* ZORVION Design System — Color Tokens */
+    --z-base: #0a0b0f;
+    --z-surface: #111318;
+    --z-elevated: #181b22;
+    --z-elevated-2: #1f232c;
+    --z-focus: #252934;
+    --z-overlay: #2a2f3a;
+    --z-border: #232730;
+    --z-border-light: #2e333d;
+    --z-border-bright: #3a4050;
+
+    /* Text */
+    --z-text-primary: #e8eaed;
+    --z-text-secondary: #a0a6b2;
+    --z-text-muted: #6b7280;
+    --z-text-dim: #4a4f5a;
+
+    /* Accent — Intelligence Blue */
+    --z-accent: #4a9eff;
+    --z-accent-bright: #6db3ff;
+    --z-accent-dim: #2a6bc4;
+    --z-accent-glow: rgba(74, 158, 255, 0.15);
+
+    /* Cyan — Active Intelligence */
+    --z-cyan: #2dd4cf;
+    --z-cyan-bright: #5eeae5;
+    --z-cyan-dim: #1a8a87;
+
+    /* Semantic */
+    --z-success: #34d399;
+    --z-success-dim: #1a6b52;
+    --z-warning: #fbbf24;
+    --z-warning-dim: #7a5c10;
+    --z-danger: #f87171;
+    --z-danger-dim: #7a2e2e;
+    --z-violet: #a78bfa;
+    --z-violet-dim: #5b3d9e;
+
+    /* Spacing */
+    --z-radius-sm: 6px;
+    --z-radius: 10px;
+    --z-radius-lg: 14px;
+    --z-radius-xl: 20px;
+
+    /* Shadows */
+    --z-shadow-sm: 0 1px 2px rgba(0,0,0,0.3);
+    --z-shadow: 0 4px 12px rgba(0,0,0,0.4);
+    --z-shadow-lg: 0 8px 32px rgba(0,0,0,0.5);
+    --z-shadow-glow: 0 0 24px var(--z-accent-glow);
+
+    /* Transitions */
+    --z-transition: 200ms cubic-bezier(0.4, 0, 0.2, 1);
+    --z-transition-slow: 400ms cubic-bezier(0.4, 0, 0.2, 1);
+  }
+
+  * {
+    box-sizing: border-box;
+  }
+
+  html, body, #root {
+    height: 100%;
+    margin: 0;
+    padding: 0;
+  }
+
+  body {
+    background: var(--z-base);
+    color: var(--z-text-primary);
+    font-family: 'Inter', system-ui, -apple-system, sans-serif;
+    font-feature-settings: 'cv02', 'cv03', 'cv04', 'cv11';
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    overflow: hidden;
+  }
+
+  /* Scrollbar */
+  ::-webkit-scrollbar {
+    width: 6px;
+    height: 6px;
+  }
+  ::-webkit-scrollbar-track {
+    background: transparent;
+  }
+  ::-webkit-scrollbar-thumb {
+    background: var(--z-border-bright);
+    border-radius: 3px;
+  }
+  ::-webkit-scrollbar-thumb:hover {
+    background: var(--z-text-dim);
+  }
+
+  /* Focus */
+  *:focus-visible {
+    outline: 2px solid var(--z-accent);
+    outline-offset: 2px;
+  }
+
+  /* Selection */
+  ::selection {
+    background: var(--z-accent-glow);
+    color: var(--z-accent-bright);
+  }
+}
+
+@layer components {
+  /* ZORVION Surface System */
+  .z-surface {
+    background: var(--z-surface);
+    border: 1px solid var(--z-border);
+    border-radius: var(--z-radius);
+  }
+
+  .z-surface-elevated {
+    background: var(--z-elevated);
+    border: 1px solid var(--z-border);
+    border-radius: var(--z-radius);
+  }
+
+  .z-surface-raised {
+    background: var(--z-elevated-2);
+    border: 1px solid var(--z-border-light);
+    border-radius: var(--z-radius);
+    box-shadow: var(--z-shadow-sm);
+  }
+
+  /* ZORVION Typography */
+  .z-label {
+    font-size: 10px;
+    font-weight: 600;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--z-text-muted);
+  }
+
+  .z-label-accent {
+    font-size: 10px;
+    font-weight: 600;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--z-accent);
+  }
+
+  .z-mono {
+    font-family: 'JetBrains Mono', monospace;
+  }
+
+  .z-title {
+    font-size: 1.5rem;
+    font-weight: 600;
+    letter-spacing: -0.02em;
+    color: var(--z-text-primary);
+  }
+
+  .z-headline {
+    font-size: 2rem;
+    font-weight: 700;
+    letter-spacing: -0.03em;
+    color: var(--z-text-primary);
+  }
+
+  /* ZORVION Status Indicators */
+  .z-status-dot {
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    display: inline-block;
+    flex-shrink: 0;
+  }
+
+  .z-status-dot--online {
+    background: var(--z-success);
+    box-shadow: 0 0 6px var(--z-success);
+  }
+
+  .z-status-dot--active {
+    background: var(--z-accent);
+    box-shadow: 0 0 6px var(--z-accent);
+  }
+
+  .z-status-dot--warning {
+    background: var(--z-warning);
+    box-shadow: 0 0 6px var(--z-warning);
+  }
+
+  .z-status-dot--danger {
+    background: var(--z-danger);
+    box-shadow: 0 0 6px var(--z-danger);
+  }
+
+  .z-status-dot--idle {
+    background: var(--z-text-dim);
+  }
+
+  /* ZORVION Confidence Bars */
+  .z-confidence-track {
+    height: 3px;
+    background: var(--z-border);
+    border-radius: 2px;
+    overflow: hidden;
+  }
+
+  .z-confidence-fill {
+    height: 100%;
+    border-radius: 2px;
+    transition: width var(--z-transition-slow);
+  }
+
+  /* ZORVION Button */
+  .z-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    padding: 8px 14px;
+    border-radius: var(--z-radius-sm);
+    font-size: 13px;
+    font-weight: 500;
+    border: 1px solid var(--z-border-light);
+    background: var(--z-elevated);
+    color: var(--z-text-primary);
+    cursor: pointer;
+    transition: all var(--z-transition);
+    user-select: none;
+  }
+
+  .z-btn:hover {
+    background: var(--z-elevated-2);
+    border-color: var(--z-border-bright);
+  }
+
+  .z-btn:active {
+    transform: translateY(1px);
+  }
+
+  .z-btn--primary {
+    background: var(--z-accent-dim);
+    border-color: var(--z-accent);
+    color: #fff;
+  }
+
+  .z-btn--primary:hover {
+    background: var(--z-accent);
+    border-color: var(--z-accent-bright);
+    box-shadow: 0 0 16px var(--z-accent-glow);
+  }
+
+  .z-btn--ghost {
+    background: transparent;
+    border-color: transparent;
+    color: var(--z-text-secondary);
+  }
+
+  .z-btn--ghost:hover {
+    background: var(--z-elevated);
+    border-color: var(--z-border);
+    color: var(--z-text-primary);
+  }
+
+  /* ZORVION Divider */
+  .z-divider {
+    height: 1px;
+    background: linear-gradient(90deg, transparent, var(--z-border-light), transparent);
+  border: none;
+  }
+
+  /* ZORVION Tag */
+  .z-tag {
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+    padding: 2px 8px;
+    border-radius: 4px;
+    font-size: 10px;
+    font-weight: 600;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    border: 1px solid var(--z-border-light);
+    color: var(--z-text-secondary);
+  }
+
+  .z-tag--demo {
+    background: rgba(251, 191, 36, 0.08);
+    border-color: rgba(251, 191, 36, 0.2);
+    color: var(--z-warning);
+  }
+
+  .z-tag--simulated {
+    background: rgba(74, 158, 255, 0.08);
+    border-color: rgba(74, 158, 255, 0.2);
+    color: var(--z-accent);
+  }
+
+  .z-tag--success {
+    background: rgba(52, 211, 153, 0.08);
+    border-color: rgba(52, 211, 153, 0.2);
+    color: var(--z-success);
+  }
+
+  .z-tag--danger {
+    background: rgba(248, 113, 113, 0.08);
+    border-color: rgba(248, 113, 113, 0.2);
+    color: var(--z-danger);
+  }
+
+  .z-tag--warning {
+    background: rgba(251, 191, 36, 0.08);
+    border-color: rgba(251, 191, 36, 0.2);
+    color: var(--z-warning);
+  }
+
+  /* ZORVION Pulse Animation */
+  @keyframes z-pulse {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0.4; }
+  }
+
+  .z-pulse {
+    animation: z-pulse 2s ease-in-out infinite;
+  }
+
+  @keyframes z-pulse-ring {
+    0% { transform: scale(0.8); opacity: 0.8; }
+    100% { transform: scale(2); opacity: 0; }
+  }
+
+  .z-pulse-ring {
+    animation: z-pulse-ring 2s ease-out infinite;
+  }
+
+  /* ZORVION Fade In */
+  @keyframes z-fade-in {
+    from { opacity: 0; transform: translateY(8px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  .z-fade-in {
+    animation: z-fade-in var(--z-transition-slow) ease-out;
+  }
+
+  @keyframes z-fade-in-fast {
+    from { opacity: 0; }
+    to { opacity: 1; }
+  }
+
+  .z-fade-in-fast {
+    animation: z-fade-in-fast 150ms ease-out;
+  }
+
+  /* ZORVION Slide In */
+  @keyframes z-slide-in-right {
+    from { opacity: 0; transform: translateX(20px); }
+    to { opacity: 1; transform: translateX(0); }
+  }
+
+  .z-slide-in-right {
+    animation: z-slide-in-right var(--z-transition-slow) ease-out;
+  }
+
+  /* ZORVION Shimmer */
+  @keyframes z-shimmer {
+    0% { background-position: -200% 0; }
+    100% { background-position: 200% 0; }
+  }
+
+  .z-shimmer {
+    background: linear-gradient(90deg, var(--z-elevated) 25%, var(--z-elevated-2) 50%, var(--z-elevated) 75%);
+    background-size: 200% 100%;
+    animation: z-shimmer 1.5s infinite;
+  }
+
+  /* ZORVION Core Glow */
+  @keyframes z-core-rotate {
+    from { transform: rotate(0deg); }
+    to { transform: rotate(360deg); }
+  }
+
+  @keyframes z-core-pulse {
+    0%, 100% { transform: scale(1); opacity: 0.6; }
+    50% { transform: scale(1.05); opacity: 1; }
+  }
+
+  .z-core-rotate {
+    animation: z-core-rotate 20s linear infinite;
+  }
+
+  .z-core-pulse {
+    animation: z-core-pulse 4s ease-in-out infinite;
+  }
+
+  /* ZORVION Progress */
+  @keyframes z-progress {
+    from { width: 0%; }
+  }
+
+  /* ZORVION Scan line effect */
+  @keyframes z-scan {
+    0% { transform: translateY(-100%); }
+    100% { transform: translateY(100%); }
+  }
+
+  .z-scan-line {
+    animation: z-scan 3s ease-in-out infinite;
+  }
+
+  /* Grid background */
+  .z-grid-bg {
+    background-image:
+      linear-gradient(var(--z-border) 1px, transparent 1px),
+      linear-gradient(90deg, var(--z-border) 1px, transparent 1px);
+    background-size: 40px 40px;
+    background-position: -1px -1px;
+  }
+
+  .z-grid-bg-fine {
+    background-image:
+      linear-gradient(rgba(35, 39, 48, 0.5) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(35, 39, 48, 0.5) 1px, transparent 1px);
+    background-size: 20px 20px;
+  }
+
+  /* Radial glow */
+  .z-radial-glow {
+    background: radial-gradient(circle at 50% 50%, var(--z-accent-glow) 0%, transparent 60%);
+  }
+
+  /* Reduced motion */
+  @media (prefers-reduced-motion: reduce) {
+    *, *::before, *::after {
+      animation-duration: 0.01ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: 0.01ms !important;
+    }
+  }
+
+  /* Text utilities */
+  .z-text-secondary { color: var(--z-text-secondary); }
+  .z-text-muted { color: var(--z-text-muted); }
+  .z-text-dim { color: var(--z-text-dim); }
+  .z-text-accent { color: var(--z-accent); }
+  .z-text-cyan { color: var(--z-cyan); }
+  .z-text-success { color: var(--z-success); }
+  .z-text-warning { color: var(--z-warning); }
+  .z-text-danger { color: var(--z-danger); }
+
+  /* Surface utilities */
+  .z-bg-base { background: var(--z-base); }
+  .z-bg-surface { background: var(--z-surface); }
+  .z-bg-elevated { background: var(--z-elevated); }
+  .z-bg-elevated-2 { background: var(--z-elevated-2); }
+  .z-bg-focus { background: var(--z-focus); }
+
+  .z-border-c { border-color: var(--z-border); }
+  .z-border-lc { border-color: var(--z-border-light); }
+  .z-border-bright { border-color: var(--z-border-bright); }
+}
